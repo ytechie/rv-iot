@@ -13,5 +13,4 @@ npm install --unsafe-perm -g node-dht-sensor
 npm install --unsafe-perm -g node-red-contrib-dht-sensor
 npm install node-red-contrib-dht-sensor
 
-
-npm install node-red-node-pi-gpiod
+#npm install node-red-contrib-influxdb
