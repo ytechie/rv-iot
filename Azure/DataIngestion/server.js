@@ -1,13 +1,16 @@
-var http = require('http');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
-var server = http.createServer(function (req, res) {
-    if (req.url == "/sensors/temp") {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write('data written');
-        res.end();
-    }
+app.use(bodyParser.json());
+
+let lastData = '';
+
+app.get('/sensors', (req, res) => res.json(lastData));
+app.put('/sensors', (req, res) => {
+    console.log(req.body);
+    lastData = req.body;
+    res.send('data received');
 });
 
-server.listen(8000);
-
-console.log('Node.js web server is running..')
+app.listen(8000, () => console.log('Node.js web server is running..'));
