@@ -27,6 +27,6 @@ jobs:
       uses: docker/build-push-action@v2.2.1
       with:
         context: .
-        file: ./Dockerfile
+        file: ./Azure/DataIngestion/Dockerfile
         push: true
         tags: ytechie/rvfrontend:latest
