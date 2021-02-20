@@ -9,8 +9,8 @@ humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
 
 if humidity is not None and temperature is not None:
     data = {}
-    data['TempC'] = temperature
-    data['Humidity'] = humidity
+    data['TempC'] = round(temperature, 1)
+    data['Humidity'] = round(humidity, 1)
     
     sys.stdout.write(json.dumps(data))
 else:
