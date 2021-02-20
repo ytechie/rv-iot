@@ -13,4 +13,5 @@ app.put('/sensors', (req, res) => {
     res.send('data received');
 });
 
-app.listen(8000, () => console.log('Node.js web server is running..'));
+let port = process.env.DATA_INGESTION_WEB_PORT || 80
+app.listen(port, () => console.log(`Node.js web server is running on port %i..`, port));
