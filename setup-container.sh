@@ -12,6 +12,9 @@
 #npm install --unsafe-perm -g node-red-contrib-dht-sensor
 #npm install node-red-contrib-dht-sensor
 
+npm install node-red-node-pushover
+npm install node-red-contrib-influxdb
+
 # Install python stuff
 apk add python3-dev
 python3 -m pip install --upgrade pip setuptools wheel
@@ -19,7 +22,7 @@ python3 -m pip install --upgrade pip setuptools wheel
 # Install the library needed to read from the temp sensor
 cd /root/sensors/dht22
 pip3 install Adafruit_DHT
-
+cd ~
 
 #npm install node-red-node-pi-gpio
 #npm install node-red-node-twilio
