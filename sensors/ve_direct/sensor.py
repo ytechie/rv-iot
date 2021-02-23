@@ -11,6 +11,7 @@ class Sensor:
 
         if(self.iterations == 5):
             self.dictionary['Voltage'] = int(self.dictionary['V']) / 1000
+            self.dictionary['BatteryPercent'] = int(self.dictionary['SOC']) / 10
             sys.stdout.write(json.dumps(self.dictionary))
             exit()
 
