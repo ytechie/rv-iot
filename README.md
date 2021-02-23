@@ -8,6 +8,8 @@ Since the Pi has Wi-Fi, I'm able to connect it to a Wi-Fi hotspot, and remotely 
 * Monitor the climate while we're away from our pets
 * Monitor the battery level while in storage (note: be sure to have a way to keep the Pi powered and your batteries topped off)
 
+I'm working on a couple of different techniques for storing/accessing in the cloud, but I also have a working prototype of Influx and Grafana installed on the Pi itself. I can then access it all in remote locations, and use WireGuard to access remotely.
+
 ## Quick Setup
 
 1. Flash your Raspberry Pi 3/4 with the [Raspberry Pi Imager](https://www.raspberrypi.org/software/)
