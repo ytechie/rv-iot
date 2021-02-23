@@ -1,5 +1,5 @@
 docker run -i -d -p 8086:8086 \
-      -v /var/influxdb-storage:/var/lib/influxdb \
+      -v influxdb-storage:/var/lib/influxdb \
       --restart unless-stopped \
       influxdb
 
