@@ -22,7 +22,12 @@ python3 -m pip install --upgrade pip setuptools wheel
 # Install the library needed to read from the temp sensor
 cd /root/sensors/dht22
 pip3 install Adafruit_DHT
+
+cd /root/sensors/ve_direct
+pip3 install pyserial
+
 cd ~
+
 
 #npm install node-red-node-pi-gpio
 #npm install node-red-node-twilio

@@ -74,13 +74,15 @@ class Vedirect:
         "0x00000100": "Analysing input voltage"
     }
 
-    def __init__(self, port='/dev/ttyAMA0', timeout=5):
+    def __init__(self, port='/dev/ttyUSB0', timeout=5):
         """
         Initialise serial component of the Victron parser. Default value is the standard serial port on Raspberry pi
         :param port:
         :param timeout:
         """
-        self.ser = serial.Serial(port, 19200, timeout=timeout)
+        self.ser = serial.Serial(port, 19200, timeout=timeout, parity=serial.PARITY_NONE,
+        stopbits=serial.STOPBITS_ONE,
+        bytesize=serial.EIGHTBITS)
         self.header1 = b'\r'
         self.header2 = b'\n'
         self.delimiter = b'\t'
@@ -90,6 +92,8 @@ class Vedirect:
         self.bytes_sum = 0
         self.state = self.wait_header
         self.dict = {}
+
+        
 
     hex, wait_header, in_key, in_value, in_checksum = range(5)
 
@@ -135,16 +139,16 @@ class Vedirect:
             self.key = bytearray()
             self.value = bytearray()
             self.state = self.wait_header
-            if self.bytes_sum % 256 == 0:
-                self.bytes_sum = 0
-                return self.dict
-            else:
-                print('Malformed packet')
-                print('----------------')
-                for k, v in self.dict.items():
-                    print("{} {}".format(k, v))
+            #if self.bytes_sum % 256 == 0:
+            self.bytes_sum = 0
+            return self.dict
+            #else:
+            #    print('Malformed packet')
+            #    print('----------------')
+            #    for k, v in self.dict.items():
+            #        print("{} {}".format(k, v))
 
-                self.bytes_sum = 0
+            #    self.bytes_sum = 0
         elif self.state == self.hex:
             self.bytes_sum = 0
             if byte == self.header2:
@@ -162,9 +166,11 @@ class Vedirect:
     def read_data_callback(self, callback):
         while True:
             byte = self.ser.read(1)
+            #print(byte)
             if byte:
                 packet = self.input(byte)
                 if packet is not None:
                     callback(packet)
+                    #return
             else:
                 break

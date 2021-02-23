@@ -1,12 +1,25 @@
 import Vedirect
 import sys
+import json
 
-#totally untested code
+class Sensor:
+    iterations = 0
+    dictionary = {}
 
-def on_victron_data_callback(data):
-    #print(data)
-    #sys.stdout.write(data)
-    foo = 2
+    def on_victron_data_callback(self, data):
+        self.dictionary.update(data)
 
-ve = Vedirect.Vedirect()
-ve.read_data_callback(on_victron_data_callback)
+        if(self.iterations == 5):
+            self.dictionary['Voltage'] = int(self.dictionary['V']) / 1000
+            sys.stdout.write(json.dumps(self.dictionary))
+            exit()
+
+        self.iterations += 1
+
+
+    def run(self):
+        ve = Vedirect.Vedirect()
+        ve.read_data_callback(self.on_victron_data_callback)
+
+s = Sensor()
+s.run()
