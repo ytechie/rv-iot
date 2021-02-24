@@ -26,6 +26,9 @@ pip3 install Adafruit_DHT
 cd /root/sensors/ve_direct
 pip3 install pyserial
 
+cd /root/sensors/pi
+pip3 install psutil
+
 cd ~
 
 
