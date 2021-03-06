@@ -31,3 +31,12 @@ I'm working on a couple of different techniques for storing/accessing in the clo
 ## Prototype
 
 ![](docs/hardware-prototype.jpg)
+
+
+## Dev
+
+Restarting Telegraf:
+`systemctl restart telegraf.service`
+
+Viewing Telegraf logs:
+`journalctl -u telegraf.service --no-pager`
