@@ -21,10 +21,10 @@ python3 -m pip install --upgrade pip setuptools wheel
 
 # Install the library needed to read from the temp sensor
 cd /root/sensors/dht22
-pip3 install Adafruit_DHT
+pip3 install -r requirements.txt
 
 cd /root/sensors/ve_direct
-pip3 install pyserial
+pip3 install -r requirements.txt
 
 cd /root/sensors/pi
 pip3 install psutil

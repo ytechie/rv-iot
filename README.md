@@ -14,15 +14,11 @@ I'm working on a couple of different techniques for storing/accessing in the clo
 
 1. Flash your Raspberry Pi 3/4 with the [Raspberry Pi Imager](https://www.raspberrypi.org/software/)
 1. Run the commands in [prep-pi.sh](prep-pi.sh)
-1. Navigate to <pi_ip_address>:1880 to access Node Red
-    * todo: instructions to set up node red
 1. Navigate to <pi_ip_address>:3000 to access Grafana
     * todo: instructions to set up Grafana
 
 ## Architecture
 ![](docs/architecture.jpg)
-
-![](docs/node-red.jpg)
 
 ## Reporting
 
@@ -31,3 +27,12 @@ I'm working on a couple of different techniques for storing/accessing in the clo
 ## Prototype
 
 ![](docs/hardware-prototype.jpg)
+
+
+## Dev
+
+Restarting Telegraf:
+`systemctl restart telegraf.service`
+
+Viewing Telegraf logs:
+`journalctl -u telegraf.service --no-pager`

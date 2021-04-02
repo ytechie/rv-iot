@@ -9,7 +9,7 @@ class Sensor:
     def on_victron_data_callback(self, data):
         self.dictionary.update(data)
 
-        if(self.iterations == 5):
+        if(self.iterations == 5 or len(self.dictionary) >= 28):
             self.dictionary['Voltage'] = int(self.dictionary['V']) / 1000
             self.dictionary['BatteryPercent'] = int(self.dictionary['SOC']) / 10
             sys.stdout.write(json.dumps(self.dictionary))
