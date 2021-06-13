@@ -1,6 +1,9 @@
 # This script is meant to be run on a Pi running Ubuntu ARM 64-bit
 # Set up your SD card using the Pi Imager: https://www.raspberrypi.org/software/
 
+#set the hostname to something more friendly
+sudo hostnamectl set-hostname rv-pi
+
 sudo apt update
 sudo apt upgrade -y
 
@@ -15,6 +18,7 @@ sudo apt-get install \
 
 
 curl -fsSL https://get.docker.com -o get-docker.sh
+
 sudo sh get-docker.sh
 
 sudo usermod -aG docker ubuntu
